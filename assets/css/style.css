@@ -1,4 +1,43 @@
- /* Penguado Aristotle-Inspired Universal Styling - Flashy Modernized */
+/* ========= LIQUID GLASS FILTER ENGINE ========= */
+svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.liquid-glass-filter {
+  display: none;
+}
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.22) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+
+  border-radius: 20px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15), inset 0 0 25px rgba(255,255,255,0.2);
+  
+  filter: url(#lg-dist);
+
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.liquid-glass:hover {
+  transform: scale(1.02);
+  filter: url(#lg-dist) brightness(1.05);
+}
+
+/* AUTO APPLY LIQUID GLASS TO EXISTING ELEMENTS */
+.banner-overlay,
+.content,
+.footer,
+.footer-embed,
+.dropdown {
+  composes: liquid-glass;
+}
+
+/* Penguado Aristotle-Inspired Universal Styling - Flashy Modernized */
 
 /* =========================================
    ANIMATION KEYFRAMES (New Modern Engine)
@@ -52,7 +91,6 @@ body {
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
-  /* Subtle animated background mesh */
   background: radial-gradient(circle at 50% 50%, #ffffff, #f4f7f6);
   color: #444444;
   line-height: 1.8;
@@ -60,7 +98,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Selection Color for Modern Feel */
 ::selection {
   background: #1abc9c;
   color: white;
@@ -82,7 +119,6 @@ body {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  /* Dynamic gradient overlay */
   background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0, 137, 123, 0.6));
   z-index: -1;
 }
@@ -91,14 +127,11 @@ body {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  /* Animated RGB-style Border via Box Shadow */
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 40px 60px;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-  
-  /* Floating Animation */
   animation: float 6s ease-in-out infinite;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
@@ -106,7 +139,6 @@ body {
 
 .banner-overlay:hover {
   transform: translateY(-5px) scale(1.02);
-  /* Flashy Glow on Hover */
   box-shadow: 0 0 30px rgba(26, 188, 156, 0.6), inset 0 0 20px rgba(255,255,255,0.2);
 }
 
@@ -117,14 +149,12 @@ body {
   font-weight: 700;
   letter-spacing: -0.02em;
   text-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  /* Slide in title */
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .title-underline {
   width: 80px;
   height: 6px;
-  /* Moving Gradient Line */
   background: linear-gradient(90deg, #00897b, #1abc9c, #00f260, #00897b);
   background-size: 300% 100%;
   animation: gradient-flow 3s ease infinite;
@@ -139,11 +169,9 @@ body {
   margin: -60px auto 40px auto;
   background: #ffffff;
   border-radius: 20px;
-  /* Multi-layered shadow for depth */
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 137, 123, 0.05);
   position: relative;
   z-index: 10;
-  /* Entry Animation */
   animation: fadeInUp 1s ease-out 0.3s backwards;
 }
 
@@ -152,16 +180,14 @@ body {
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 
-/* Solid Buttons */
+/* Buttons */
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* Flashy Animated Gradient Background */
   background: linear-gradient(300deg, #00897b, #1abc9c, #48c6ef, #00897b);
   background-size: 300% 300%;
   animation: gradient-flow 6s ease infinite;
-  
   color: #fff;
   padding: 14px 32px;
   font-size: 1rem;
@@ -178,7 +204,6 @@ body {
   overflow: hidden;
 }
 
-/* Shine effect crossing the button */
 .button::after {
   content: '';
   position: absolute;
@@ -186,7 +211,6 @@ body {
   width: 50%; height: 100%;
   background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
   transform: skewX(-25deg);
-  transition: none;
 }
 
 .button:hover::after {
@@ -197,7 +221,6 @@ body {
 .button:hover {
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 15px 35px rgba(0, 137, 123, 0.5);
-  /* Stop gradient animation on hover for focus, or keep it. Let's keep it. */
 }
 
 .button:active {
@@ -221,7 +244,6 @@ body {
   overflow: hidden;
 }
 
-/* Fill animation on hover */
 .button-outlined::before {
   content: "";
   position: absolute;
@@ -265,7 +287,6 @@ body {
 /* Divider */
 .divider {
   height: 2px;
-  /* Animated Gradient Line */
   background: linear-gradient(90deg, transparent, #00897b, #1abc9c, #00897b, transparent);
   background-size: 200% auto;
   animation: gradient-flow 3s linear infinite;
@@ -275,6 +296,7 @@ body {
   opacity: 0.8 !important;
 }
 
+/* Footer */
 .footer {
   background: #ffffff;
   padding: 60px 20px;
@@ -312,7 +334,7 @@ body {
   transform: scale(1.01);
 }
 
-/* Penguado Navigation Bar */
+/* Navigation Bar */
 .penguado-nav {
   opacity: 1 !important;
   transform: none !important;
@@ -321,9 +343,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
- z-index: 9999;
-  
-  /* Animated bottom border gradient */
+  z-index: 9999;
   border-bottom: 2px solid transparent;
   background-image: linear-gradient(rgba(26, 188, 156, 0.85), rgba(26, 188, 156, 0.85)), 
                     linear-gradient(90deg, #00897b, #fff, #00897b);
@@ -336,7 +356,6 @@ body {
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  margin: 0;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -361,7 +380,6 @@ body {
   display: flex;
   align-items: center;
   gap: 1.5em;
-  margin-right: 0;
 }
 
 .nav-right a {
@@ -371,7 +389,6 @@ body {
   border-radius: 8px;
   font-weight: 500;
   transition: all 0.3s ease;
-  position: relative;
 }
 
 .nav-right a:hover {
@@ -389,22 +406,17 @@ body {
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  top: 130%; /* Start slightly lower for animation */
+  top: 130%;
   left: 0;
   min-width: 220px;
-  
-  /* Glass dropdown with gradient border */
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  
   list-style: none;
   padding: 10px;
   margin: 0;
   border-radius: 12px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  
-  /* Flashy entrance */
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy spring */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform: translateY(15px) scale(0.95);
   border: 1px solid rgba(26, 188, 156, 0.2);
 }
@@ -424,10 +436,9 @@ body {
 .dropdown li a:hover {
   background-color: rgba(26, 188, 156, 0.1);
   color: #00897b;
-  padding-left: 20px; /* Slight nudge to the right */
+  padding-left: 20px;
 }
 
-/* Show dropdown on hover with animation */
 .dropdown-container:hover .dropdown {
   visibility: visible;
   opacity: 1;
@@ -435,7 +446,6 @@ body {
   transform: translateY(0) scale(1);
 }
 
-/* Prevent dropdown from going off screen */
 .dropdown-container .dropdown {
   right: 0;
   left: auto;
