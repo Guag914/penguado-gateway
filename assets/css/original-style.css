@@ -1,0 +1,442 @@
+ /* Penguado Aristotle-Inspired Universal Styling - Flashy Modernized */
+
+/* =========================================
+   ANIMATION KEYFRAMES (New Modern Engine)
+   ========================================= */
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+} 
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(26, 188, 156, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(26, 188, 156, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(26, 188, 156, 0); }
+}
+
+@keyframes border-rotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+/* =========================================
+   BASE STYLES
+   ========================================= */
+
+/* Fonts & Base */
+html, body {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* Subtle animated background mesh */
+  background: radial-gradient(circle at 50% 50%, #ffffff, #f4f7f6);
+  color: #444444;
+  line-height: 1.8;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Selection Color for Modern Feel */
+::selection {
+  background: #1abc9c;
+  color: white;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  background: url('../images/page-thumbnail.jpg') center/cover no-repeat fixed;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0 !important;
+  overflow: hidden;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Dynamic gradient overlay */
+  background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0, 137, 123, 0.6));
+  z-index: -1;
+}
+
+.banner-overlay {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  /* Animated RGB-style Border via Box Shadow */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  
+  /* Floating Animation */
+  animation: float 6s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.banner-overlay:hover {
+  transform: translateY(-5px) scale(1.02);
+  /* Flashy Glow on Hover */
+  box-shadow: 0 0 30px rgba(26, 188, 156, 0.6), inset 0 0 20px rgba(255,255,255,0.2);
+}
+
+.page-title {
+  color: #ffffff;
+  font-size: 3.5rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  /* Slide in title */
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.title-underline {
+  width: 80px;
+  height: 6px;
+  /* Moving Gradient Line */
+  background: linear-gradient(90deg, #00897b, #1abc9c, #00f260, #00897b);
+  background-size: 300% 100%;
+  animation: gradient-flow 3s ease infinite;
+  margin: 20px auto 0 auto;
+  border-radius: 10px;
+}
+
+/* Content */
+.content {
+  padding: 60px 40px;
+  max-width: 1000px;
+  margin: -60px auto 40px auto;
+  background: #ffffff;
+  border-radius: 20px;
+  /* Multi-layered shadow for depth */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 137, 123, 0.05);
+  position: relative;
+  z-index: 10;
+  /* Entry Animation */
+  animation: fadeInUp 1s ease-out 0.3s backwards;
+}
+
+/* Text Alignment Classes */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* Solid Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Flashy Animated Gradient Background */
+  background: linear-gradient(300deg, #00897b, #1abc9c, #48c6ef, #00897b);
+  background-size: 300% 300%;
+  animation: gradient-flow 6s ease infinite;
+  
+  color: #fff;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: auto;
+  max-width: 100%;
+  box-shadow: 0 10px 20px rgba(0, 137, 123, 0.3);
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine effect crossing the button */
+.button::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  transition: none;
+}
+
+.button:hover::after {
+  left: 150%;
+  transition: 0.7s ease;
+}
+
+.button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 137, 123, 0.5);
+  /* Stop gradient animation on hover for focus, or keep it. Let's keep it. */
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+/* Outlined Buttons */
+.button-outlined {
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: inline-block;
+  padding: 10px 28px;
+  background: transparent;
+  color: #00897b;
+  border: 2px solid #00897b;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Fill animation on hover */
+.button-outlined::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: #00897b;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+
+.button-outlined:hover::before {
+  transform: scaleX(1);
+}
+
+.button-outlined:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 137, 123, 0.3);
+  border-color: #00897b;
+}
+
+.out-btn-left   { display: block; text-align: left; }
+.out-btn-center { display: block; text-align: center; }
+.out-btn-right  { display: block; text-align: right; }
+
+/* Button Positioning */
+.btn-left   { display: block; text-align: left; }
+.btn-center { display: block; text-align: center; }
+.btn-right  { display: block; text-align: right; }
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+  flex-wrap: wrap;
+  margin: 40px 0;
+}
+
+/* Divider */
+.divider {
+  height: 2px;
+  /* Animated Gradient Line */
+  background: linear-gradient(90deg, transparent, #00897b, #1abc9c, #00897b, transparent);
+  background-size: 200% auto;
+  animation: gradient-flow 3s linear infinite;
+  margin: 40px auto;
+  width: 60%;
+  border-radius: 50%;
+  opacity: 0.8 !important;
+}
+
+.footer {
+  background: #ffffff;
+  padding: 60px 20px;
+  border-top: 1px solid #eaeaea;
+  position: relative;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.footer-embed {
+  flex-basis: 100%;
+  margin-top: 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.footer-embed:hover {
+  transform: scale(1.01);
+}
+
+/* Penguado Navigation Bar */
+.penguado-nav {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: all 0.3s ease !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+ z-index: 9999;
+  
+  /* Animated bottom border gradient */
+  border-bottom: 2px solid transparent;
+  background-image: linear-gradient(rgba(26, 188, 156, 0.85), rgba(26, 188, 156, 0.85)), 
+                    linear-gradient(90deg, #00897b, #fff, #00897b);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-left a {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: text-shadow 0.3s;
+}
+
+.nav-left a:hover {
+  text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  margin-right: 0;
+}
+
+.nav-right a {
+  text-decoration: none;
+  color: white;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-right a:hover {
+  background-color: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 130%; /* Start slightly lower for animation */
+  left: 0;
+  min-width: 220px;
+  
+  /* Glass dropdown with gradient border */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  
+  /* Flashy entrance */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy spring */
+  transform: translateY(15px) scale(0.95);
+  border: 1px solid rgba(26, 188, 156, 0.2);
+}
+
+.dropdown li a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.dropdown li a:hover {
+  background-color: rgba(26, 188, 156, 0.1);
+  color: #00897b;
+  padding-left: 20px; /* Slight nudge to the right */
+}
+
+/* Show dropdown on hover with animation */
+.dropdown-container:hover .dropdown {
+  visibility: visible;
+  opacity: 1;
+  top: 100%;
+  transform: translateY(0) scale(1);
+}
+
+/* Prevent dropdown from going off screen */
+.dropdown-container .dropdown {
+  right: 0;
+  left: auto;
+}
